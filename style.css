@@ -1,0 +1,36 @@
+body,
+a {
+	font: 15px Courier;
+	text-decoration: none;
+}
+
+.header {
+	background: black;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	margin: 0px;
+	padding: 5px;
+}
+
+a {
+	color: blue;
+}
+
+a:hover {
+	color: blue;
+	background: #bbbbbb;
+}
+
+.link {
+	color: white;
+}
+
+.cursor {
+	background: #999999;
+}
+
+.statement {
+	width: 600px;
+	padding: 10px;
+}
