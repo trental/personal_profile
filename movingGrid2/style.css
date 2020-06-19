@@ -13,31 +13,31 @@ body * {
 	text-align: center;
 	margin: 0;
 	padding: 0;
-	height: 500px;
-	width: 606px;
+	height: 600px;
+	width: 706px;
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
 }
 
 .fullSquare {
-	width: 450px;
-	height: 375px;
+	width: 630px;
+	height: 540px;
 }
 
 .tallRectangle {
-	width: 150px;
-	height: 375px;
+	width: 70px;
+	height: 540px;
 }
 
 .flatRectangle {
-	width: 450px;
-	height: 125px;
+	width: 630px;
+	height: 60px;
 }
 
 .tinySquare {
-	width: 150px;
-	height: 125px;
+	width: 70px;
+	height: 60px;
 }
 
 .toTinySquare {
@@ -62,29 +62,29 @@ body * {
 
 @keyframes kfToTinySquare {
 	100% {
-		width: 150px;
-		height: 125px;
+		width: 70px;
+		height: 60px;
 	}
 }
 
 @keyframes kfToFullSquare {
 	100% {
-		width: 450px;
-		height: 375px;
+		width: 630px;
+		height: 540px;
 	}
 }
 
 @keyframes kfToFlatRectangle {
 	100% {
-		width: 450px;
-		height: 125px;
+		width: 630px;
+		height: 60px;
 	}
 }
 
 @keyframes kfToTallRectangle {
 	100% {
-		width: 150px;
-		height: 375px;
+		width: 70px;
+		height: 540px;
 	}
 }
 

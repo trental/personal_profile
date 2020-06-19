@@ -110,12 +110,16 @@ class ProjectSelector {
 		const clicked = e.target.dataset.placement;
 		if (clicked === 'TopLeft') {
 			this.goTopLeft();
+			this.position = 5;
 		} else if (clicked === 'TopRight') {
 			this.goTopRight();
+			this.position = 15;
 		} else if (clicked === 'BottomLeft') {
 			this.goBottomLeft();
+			this.position = 25;
 		} else if (clicked === 'BottomRight') {
 			this.goBottomRight();
+			this.position = 35;
 		}
 	}
 }
