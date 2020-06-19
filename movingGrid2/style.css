@@ -41,22 +41,22 @@ body * {
 }
 
 .toTinySquare {
-	animation: kfToTinySquare 500ms;
+	animation: kfToTinySquare 350ms;
 	animation-fill-mode: forwards;
 }
 
 .toFullSquare {
-	animation: kfToFullSquare 500ms;
+	animation: kfToFullSquare 350ms;
 	animation-fill-mode: forwards;
 }
 
 .toFlatRectangle {
-	animation: kfToFlatRectangle 500ms;
+	animation: kfToFlatRectangle 350ms;
 	animation-fill-mode: forwards;
 }
 
 .toTallRectangle {
-	animation: kfToTallRectangle 500ms;
+	animation: kfToTallRectangle 350ms;
 	animation-fill-mode: forwards;
 }
 

@@ -1,4 +1,4 @@
-const transitionTime = 500;
+const transitionTime = 350;
 
 class ProjectSelector {
 	constructor(el, transitionTime) {
@@ -23,22 +23,23 @@ class ProjectSelector {
 	}
 
 	onClick(event) {
-		if (event.target.dataset.placement === 'TopLeft') {
+		const clicked = event.target.dataset.placement;
+		if (clicked === 'TopLeft') {
 			this.TopLeft.toFullSquare();
 			this.TopRight.toTallRectangle();
 			this.BottomLeft.toFlatRectangle();
 			this.BottomRight.toTinySquare();
-		} else if (event.target.dataset.placement === 'TopRight') {
+		} else if (clicked === 'TopRight') {
 			this.TopLeft.toTallRectangle();
 			this.TopRight.toFullSquare();
 			this.BottomLeft.toTinySquare();
 			this.BottomRight.toFlatRectangle();
-		} else if (event.target.dataset.placement === 'BottomLeft') {
+		} else if (clicked === 'BottomLeft') {
 			this.TopLeft.toFlatRectangle();
 			this.TopRight.toTinySquare();
 			this.BottomLeft.toFullSquare();
 			this.BottomRight.toTallRectangle();
-		} else if (event.target.dataset.placement === 'BottomRight') {
+		} else if (clicked === 'BottomRight') {
 			this.TopLeft.toTinySquare();
 			this.TopRight.toFlatRectangle();
 			this.BottomLeft.toTallRectangle();
@@ -65,7 +66,10 @@ class Project {
 	}
 
 	toTinySquare() {
-		this.element.classList.add('toTinySquare');
+		setTimeout(() => {
+			this.element.classList.add('toTinySquare');
+		}, 0);
+
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('tinySquare');
@@ -74,7 +78,10 @@ class Project {
 
 	toFullSquare() {
 		// this.clearSize();
-		this.element.classList.add('toFullSquare');
+		setTimeout(() => {
+			this.element.classList.add('toFullSquare');
+		}, 0);
+
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('fullSquare');
@@ -83,7 +90,10 @@ class Project {
 
 	toFlatRectangle() {
 		// this.clearSize();
-		this.element.classList.add('toFlatRectangle');
+		setTimeout(() => {
+			this.element.classList.add('toFlatRectangle');
+		}, 0);
+
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('flatRectangle');
@@ -92,7 +102,10 @@ class Project {
 
 	toTallRectangle() {
 		// this.clearSize();
-		this.element.classList.add('toTallRectangle');
+		setTimeout(() => {
+			this.element.classList.add('toTallRectangle');
+		}, 0);
+
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('tallRectangle');
