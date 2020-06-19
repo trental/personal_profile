@@ -3,6 +3,7 @@ const transitionTime = 350;
 class ProjectSelector {
 	constructor(el, transitionTime) {
 		this.element = el;
+		this.transitionTime = transitionTime;
 		this.TopLeft = new Project(
 			document.querySelector('.TopLeft'),
 			transitionTime
@@ -20,30 +21,101 @@ class ProjectSelector {
 			transitionTime
 		);
 		this.element.onclick = this.onClick.bind(this);
+		this.position = 0;
+		this.stack = 0;
 	}
 
-	onClick(event) {
-		const clicked = event.target.dataset.placement;
+	decreaseStack() {
+		this.stack--;
+		console.log('stack:', this.stack);
+	}
+
+	goTopLeft() {
+		this.TopLeft.toFullSquare();
+		this.TopRight.toTallRectangle();
+		this.BottomLeft.toFlatRectangle();
+		this.BottomRight.toTinySquare();
+	}
+
+	goTopRight() {
+		this.TopLeft.toTallRectangle();
+		this.TopRight.toFullSquare();
+		this.BottomLeft.toTinySquare();
+		this.BottomRight.toFlatRectangle();
+	}
+
+	goBottomLeft() {
+		this.TopLeft.toFlatRectangle();
+		this.TopRight.toTinySquare();
+		this.BottomLeft.toFullSquare();
+		this.BottomRight.toTallRectangle();
+	}
+
+	goBottomRight() {
+		this.TopLeft.toTinySquare();
+		this.TopRight.toFlatRectangle();
+		this.BottomLeft.toTallRectangle();
+		this.BottomRight.toFullSquare();
+	}
+
+	forward() {
+		this.position = Math.min(this.position + 1, 40);
+		console.log(this.position);
+		if (this.position == 10) {
+			this.stack++;
+			setTimeout(() => {
+				this.goTopRight();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		} else if (this.position == 20) {
+			this.stack++;
+			setTimeout(() => {
+				this.goBottomLeft();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		} else if (this.position == 30) {
+			this.stack++;
+			setTimeout(() => {
+				this.goBottomRight();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		}
+	}
+
+	backward() {
+		this.position = Math.max(this.position - 1, 0);
+		console.log(this.position);
+		if (this.position == 10) {
+			this.stack++;
+			setTimeout(() => {
+				this.goTopLeft();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		} else if (this.position == 20) {
+			this.stack++;
+			setTimeout(() => {
+				this.goTopRight();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		} else if (this.position == 30) {
+			this.stack++;
+			setTimeout(() => {
+				this.goBottomLeft();
+				this.decreaseStack();
+			}, this.stack * this.transitionTime);
+		}
+	}
+
+	onClick(e) {
+		const clicked = e.target.dataset.placement;
 		if (clicked === 'TopLeft') {
-			this.TopLeft.toFullSquare();
-			this.TopRight.toTallRectangle();
-			this.BottomLeft.toFlatRectangle();
-			this.BottomRight.toTinySquare();
+			this.goTopLeft();
 		} else if (clicked === 'TopRight') {
-			this.TopLeft.toTallRectangle();
-			this.TopRight.toFullSquare();
-			this.BottomLeft.toTinySquare();
-			this.BottomRight.toFlatRectangle();
+			this.goTopRight();
 		} else if (clicked === 'BottomLeft') {
-			this.TopLeft.toFlatRectangle();
-			this.TopRight.toTinySquare();
-			this.BottomLeft.toFullSquare();
-			this.BottomRight.toTallRectangle();
+			this.goBottomLeft();
 		} else if (clicked === 'BottomRight') {
-			this.TopLeft.toTinySquare();
-			this.TopRight.toFlatRectangle();
-			this.BottomLeft.toTallRectangle();
-			this.BottomRight.toFullSquare();
+			this.goBottomRight();
 		}
 	}
 }
@@ -117,3 +189,12 @@ const AA = new ProjectSelector(
 	document.querySelector('.projectSelector'),
 	transitionTime
 );
+
+window.addEventListener('wheel', (event) => {
+	const delta = Math.sign(event.deltaY);
+	if (delta == 1) {
+		AA.forward();
+	} else {
+		AA.backward();
+	}
+});
