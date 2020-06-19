@@ -1,42 +1,24 @@
-const fullHeight = 500;
-const fullWidth = 600;
-const scaleSize = 0.25;
+const transitionTime = 500;
 
 class ProjectSelector {
-	constructor(el, fullHeight, fullWidth, scaleSize) {
+	constructor(el, transitionTime) {
 		this.element = el;
 		this.TopLeft = new Project(
 			document.querySelector('.TopLeft'),
-			fullHeight,
-			fullWidth,
-			scaleSize,
-			ss[0].cssRules[3]
+			transitionTime
 		);
-		this.TopLeft.toFullSquare();
 		this.TopRight = new Project(
 			document.querySelector('.TopRight'),
-			fullHeight,
-			fullWidth,
-			scaleSize,
-			ss[0].cssRules[4]
+			transitionTime
 		);
-		this.TopRight.toTallRectangle();
 		this.BottomLeft = new Project(
 			document.querySelector('.BottomLeft'),
-			fullHeight,
-			fullWidth,
-			scaleSize,
-			ss[0].cssRules[5]
+			transitionTime
 		);
-		this.BottomLeft.toFlatRectangle();
 		this.BottomRight = new Project(
 			document.querySelector('.BottomRight'),
-			fullHeight,
-			fullWidth,
-			scaleSize,
-			ss[0].cssRules[6]
+			transitionTime
 		);
-		this.BottomRight.toTinySquare();
 		this.element.onclick = this.onClick.bind(this);
 	}
 
@@ -66,15 +48,16 @@ class ProjectSelector {
 }
 
 class Project {
-	constructor(el, fullHeight, fullWidth, scaleSize, selector) {
+	constructor(el, transitionTime) {
 		this.element = el;
-		this.fullHeight = fullHeight;
-		this.fullWidth = fullWidth;
-		this.scaleSize = scaleSize;
-		this.ss = selector;
+		this.transitionTime = transitionTime;
 	}
 
 	clearSize() {
+		this.element.classList.remove('tinySquare');
+		this.element.classList.remove('fullSquare');
+		this.element.classList.remove('tallRectangle');
+		this.element.classList.remove('flatRectangle');
 		this.element.classList.remove('toTinySquare');
 		this.element.classList.remove('toFullSquare');
 		this.element.classList.remove('toTallRectangle');
@@ -82,48 +65,42 @@ class Project {
 	}
 
 	toTinySquare() {
-		this.clearSize();
-		setTimeout(() => {
-			this.ss.style.width = this.fullWidth * this.scaleSize;
-			this.ss.style.height = this.fullHeight * this.scaleSize;
-		}, 1000);
 		this.element.classList.add('toTinySquare');
+		setTimeout(() => {
+			this.clearSize();
+			this.element.classList.add('tinySquare');
+		}, this.transitionTime);
 	}
 
 	toFullSquare() {
-		this.clearSize();
-		setTimeout(() => {
-			this.ss.style.width = this.fullWidth * (1 - this.scaleSize);
-			this.ss.style.height = this.fullHeight * (1 - this.scaleSize);
-		}, 1000);
+		// this.clearSize();
 		this.element.classList.add('toFullSquare');
+		setTimeout(() => {
+			this.clearSize();
+			this.element.classList.add('fullSquare');
+		}, this.transitionTime);
 	}
 
 	toFlatRectangle() {
-		this.clearSize();
-		setTimeout(() => {
-			this.ss.style.width = this.fullWidth * (1 - this.scaleSize);
-			this.ss.style.height = this.fullHeight * this.scaleSize;
-		});
+		// this.clearSize();
 		this.element.classList.add('toFlatRectangle');
+		setTimeout(() => {
+			this.clearSize();
+			this.element.classList.add('flatRectangle');
+		}, this.transitionTime);
 	}
 
 	toTallRectangle() {
-		this.clearSize();
-		setTimeout(() => {
-			this.ss.style.width = this.fullWidth * this.scaleSize;
-			this.ss.style.height = this.fullHeight * (1 - this.scaleSize);
-			console.log(this.ss.style.height);
-		}, 1000);
+		// this.clearSize();
 		this.element.classList.add('toTallRectangle');
+		setTimeout(() => {
+			this.clearSize();
+			this.element.classList.add('tallRectangle');
+		}, this.transitionTime);
 	}
 }
-var ss = document.styleSheets;
-console.log(ss[0]);
 
 const AA = new ProjectSelector(
 	document.querySelector('.projectSelector'),
-	fullHeight,
-	fullWidth,
-	scaleSize
+	transitionTime
 );

@@ -20,68 +20,68 @@ body * {
 	flex-wrap: wrap;
 }
 
-.TopLeft {
+.fullSquare {
 	width: 450px;
 	height: 375px;
 }
 
-.TopRight {
+.tallRectangle {
 	width: 150px;
 	height: 375px;
 }
 
-.BottomLeft {
+.flatRectangle {
 	width: 450px;
 	height: 125px;
 }
 
-.BottomRight {
+.tinySquare {
 	width: 150px;
 	height: 125px;
 }
 
 .toTinySquare {
-	animation: tinySquare 1s;
+	animation: kfToTinySquare 500ms;
 	animation-fill-mode: forwards;
 }
 
 .toFullSquare {
-	animation: fullSquare 1s;
+	animation: kfToFullSquare 500ms;
 	animation-fill-mode: forwards;
 }
 
 .toFlatRectangle {
-	animation: flatRectangle 1s;
+	animation: kfToFlatRectangle 500ms;
 	animation-fill-mode: forwards;
 }
 
 .toTallRectangle {
-	animation: tallRectangle 1s;
+	animation: kfToTallRectangle 500ms;
 	animation-fill-mode: forwards;
 }
 
-@keyframes tinySquare {
+@keyframes kfToTinySquare {
 	100% {
 		width: 150px;
 		height: 125px;
 	}
 }
 
-@keyframes fullSquare {
+@keyframes kfToFullSquare {
 	100% {
 		width: 450px;
 		height: 375px;
 	}
 }
 
-@keyframes flatRectangle {
+@keyframes kfToFlatRectangle {
 	100% {
 		width: 450px;
 		height: 125px;
 	}
 }
 
-@keyframes tallRectangle {
+@keyframes kfToTallRectangle {
 	100% {
 		width: 150px;
 		height: 375px;
