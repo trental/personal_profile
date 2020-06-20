@@ -3,6 +3,10 @@ body * {
 	border: 1px solid lightslategrey;
 }
 
+h1 {
+	margin: auto;
+}
+
 .parallax {
 	/* The image used */
 	background-image: url('nano-home-bg-tiny.jpg');
@@ -16,13 +20,42 @@ body * {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
- 
+
+.intro {
+	background: hsla(146, 62%, 95%, 1);
+	font-family: 'Lucida Console', Monaco, monospace;
+	font-size: 1.5rem;
+	text-align: center;
+	margin: auto;
+	margin-top: 100px;
+	height: 400px;
+	width: 706px;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .projectSelector {
 	background: hsla(146, 62%, 95%, 1);
 	font-family: 'Lucida Console', Monaco, monospace;
 	font-size: 1.5rem;
 	text-align: center;
 	margin: auto;
+	padding: 0;
+	height: 600px;
+	width: 706px;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.about {
+	background: hsla(146, 62%, 95%, 1);
+	font-family: 'Lucida Console', Monaco, monospace;
+	font-size: 1.5rem;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 500px;
 	padding: 0;
 	height: 600px;
 	width: 706px;

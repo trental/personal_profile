@@ -4,20 +4,14 @@ class ProjectSelector {
 	constructor(el, transitionTime) {
 		this.element = el;
 		this.transitionTime = transitionTime;
-		this.TopLeft = new Project(
-			document.querySelector('.TopLeft'),
-			transitionTime
-		);
-		this.TopRight = new Project(
-			document.querySelector('.TopRight'),
-			transitionTime
-		);
+		this.TopLeft = new Project(el.querySelector('.TopLeft'), transitionTime);
+		this.TopRight = new Project(el.querySelector('.TopRight'), transitionTime);
 		this.BottomLeft = new Project(
-			document.querySelector('.BottomLeft'),
+			el.querySelector('.BottomLeft'),
 			transitionTime
 		);
 		this.BottomRight = new Project(
-			document.querySelector('.BottomRight'),
+			el.querySelector('.BottomRight'),
 			transitionTime
 		);
 		this.element.onclick = this.onClick.bind(this);
@@ -122,6 +116,10 @@ class ProjectSelector {
 			this.position = 35;
 		}
 	}
+
+	getSelected() {
+		return this.position;
+	}
 }
 
 class Project {
@@ -189,16 +187,11 @@ class Project {
 	}
 }
 
-const AA = new ProjectSelector(
-	document.querySelector('.projectSelector'),
-	transitionTime
-);
-
-window.addEventListener('wheel', (event) => {
-	const delta = Math.sign(event.deltaY);
-	if (delta == 1) {
-		AA.forward();
-	} else {
-		AA.backward();
-	}
-});
+// window.addEventListener('wheel', (event) => {
+// 	const delta = Math.sign(event.deltaY);
+// 	if (delta == 1) {
+// 		AA.forward();
+// 	} else {
+// 		AA.backward();
+// 	}
+// });
