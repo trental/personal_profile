@@ -4,13 +4,19 @@ class ProjectSelector {
 	constructor(el, transitionTime) {
 		this.element = el;
 		this.transitionTime = transitionTime;
-		this.TopLeft = new Project(el.querySelector('.TopLeft'), transitionTime);
-		this.TopRight = new Project(el.querySelector('.TopRight'), transitionTime);
-		this.BottomLeft = new Project(
+		this.TopLeft = new ProjectDetail(
+			el.querySelector('.TopLeft'),
+			transitionTime
+		);
+		this.TopRight = new ProjectDetail(
+			el.querySelector('.TopRight'),
+			transitionTime
+		);
+		this.BottomLeft = new ProjectDetail(
 			el.querySelector('.BottomLeft'),
 			transitionTime
 		);
-		this.BottomRight = new Project(
+		this.BottomRight = new ProjectDetail(
 			el.querySelector('.BottomRight'),
 			transitionTime
 		);
@@ -21,7 +27,6 @@ class ProjectSelector {
 
 	decreaseStack() {
 		this.stack--;
-		console.log('stack:', this.stack);
 	}
 
 	goTopLeft() {
@@ -53,21 +58,20 @@ class ProjectSelector {
 	}
 
 	forward() {
-		this.position = Math.min(this.position + 1, 40);
-		console.log(this.position);
-		if (this.position == 10) {
+		this.position = Math.min(this.position + 1, 3);
+		if (this.position == 1) {
 			this.stack++;
 			setTimeout(() => {
 				this.goTopRight();
 				this.decreaseStack();
 			}, this.stack * this.transitionTime);
-		} else if (this.position == 20) {
+		} else if (this.position == 2) {
 			this.stack++;
 			setTimeout(() => {
 				this.goBottomLeft();
 				this.decreaseStack();
 			}, this.stack * this.transitionTime);
-		} else if (this.position == 30) {
+		} else if (this.position == 3) {
 			this.stack++;
 			setTimeout(() => {
 				this.goBottomRight();
@@ -78,20 +82,19 @@ class ProjectSelector {
 
 	backward() {
 		this.position = Math.max(this.position - 1, 0);
-		console.log(this.position);
-		if (this.position == 10) {
+		if (this.position == 1) {
 			this.stack++;
 			setTimeout(() => {
 				this.goTopLeft();
 				this.decreaseStack();
 			}, this.stack * this.transitionTime);
-		} else if (this.position == 20) {
+		} else if (this.position == 2) {
 			this.stack++;
 			setTimeout(() => {
 				this.goTopRight();
 				this.decreaseStack();
 			}, this.stack * this.transitionTime);
-		} else if (this.position == 30) {
+		} else if (this.position == 3) {
 			this.stack++;
 			setTimeout(() => {
 				this.goBottomLeft();
@@ -104,25 +107,25 @@ class ProjectSelector {
 		const clicked = e.target.dataset.placement;
 		if (clicked === 'TopLeft') {
 			this.goTopLeft();
-			this.position = 5;
+			this.position = 0;
 		} else if (clicked === 'TopRight') {
 			this.goTopRight();
-			this.position = 15;
+			this.position = 1;
 		} else if (clicked === 'BottomLeft') {
 			this.goBottomLeft();
-			this.position = 25;
+			this.position = 2;
 		} else if (clicked === 'BottomRight') {
 			this.goBottomRight();
-			this.position = 35;
+			this.position = 3;
 		}
 	}
 
-	getSelected() {
+	getSelectedSquare() {
 		return this.position;
 	}
 }
 
-class Project {
+class ProjectDetail {
 	constructor(el, transitionTime) {
 		this.element = el;
 		this.transitionTime = transitionTime;
@@ -151,7 +154,6 @@ class Project {
 	}
 
 	toFullSquare() {
-		// this.clearSize();
 		setTimeout(() => {
 			this.element.classList.add('toFullSquare');
 		}, 0);
@@ -163,7 +165,6 @@ class Project {
 	}
 
 	toFlatRectangle() {
-		// this.clearSize();
 		setTimeout(() => {
 			this.element.classList.add('toFlatRectangle');
 		}, 0);
@@ -175,7 +176,6 @@ class Project {
 	}
 
 	toTallRectangle() {
-		// this.clearSize();
 		setTimeout(() => {
 			this.element.classList.add('toTallRectangle');
 		}, 0);
@@ -186,12 +186,3 @@ class Project {
 		}, this.transitionTime);
 	}
 }
-
-// window.addEventListener('wheel', (event) => {
-// 	const delta = Math.sign(event.deltaY);
-// 	if (delta == 1) {
-// 		AA.forward();
-// 	} else {
-// 		AA.backward();
-// 	}
-// });

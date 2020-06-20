@@ -1,15 +1,11 @@
 let stops = [0, 1400, 3000, 4600, 6200, 7800];
 let position = 0;
+let projects = [];
+let visitedAll = false;
 
-const paperclipElement = document.querySelector('.paperclip');
-const statementsElement = document.querySelector('.statements');
-const ravencoinElement = document.querySelector('.ravencoin');
-const flashcardsElement = document.querySelector('.flashcards');
-
-const paperclip = new ProjectSelector(paperclipElement, transitionTime);
-const statements = new ProjectSelector(statementsElement, transitionTime);
-const ravencoin = new ProjectSelector(ravencoinElement, transitionTime);
-const flashcards = new ProjectSelector(flashcardsElement, transitionTime);
+document.querySelectorAll('.projectSelector').forEach((project) => {
+	projects.push(new ProjectSelector(project, transitionTime));
+});
 
 function posTop() {
 	// Browser Window Size and Position
@@ -23,23 +19,59 @@ function posTop() {
 		: 0;
 }
 
+// move to next project
+function moveForwards() {
+	position = Math.min(position + 1, stops.length - 1);
+	window.scrollTo({
+		top: stops[position],
+		left: 0,
+		behavior: 'smooth',
+	});
+}
+
+// move to previous project
+function moveBackwards() {
+	position = Math.max(position - 1, 0);
+	window.scrollTo({
+		top: stops[position],
+		left: 0,
+		behavior: 'smooth',
+	});
+}
+
+// moving position can either be moving between projects or inside project detail
 function movePosition(delta) {
-	console.log(ravencoin.getSelected());
 	if (delta === 1) {
-		position = Math.min(position + 1, stops.length - 1);
-		window.scrollTo({
-			top: stops[position],
-			left: 0,
-			behavior: 'smooth',
-		});
+		if (position == 0 || position == 5) {
+			// no detail on intro or about so just move along
+			moveForwards();
+		} else if (
+			// if on a project make sure that user has seen it before or is at the last detail
+			projects[position - 1].getSelectedSquare() == 3 ||
+			visitedAll == true
+		) {
+			moveForwards();
+		} else {
+			// first visit to project and not at end so flip through the details
+			projects[position - 1].forward();
+		}
+		if (position == 5) {
+			// you made it to the end so don't force the detail view
+			visitedAll = true;
+		}
 	}
 	if (delta === -1) {
-		position = Math.max(position - 1, 0);
-		window.scrollTo({
-			top: stops[position],
-			left: 0,
-			behavior: 'smooth',
-		});
+		// similar to delta == 1 but in reverse
+		if (position == 0 || position == 5) {
+			moveBackwards();
+		} else if (
+			projects[position - 1].getSelectedSquare() == 0 ||
+			visitedAll == true
+		) {
+			moveBackwards();
+		} else {
+			projects[position - 1].backward();
+		}
 	}
 }
 
@@ -101,5 +133,3 @@ setInterval(() => {
 		gotoPosition();
 	}
 }, 100);
-
-//

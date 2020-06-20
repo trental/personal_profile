@@ -64,11 +64,6 @@ h1 {
 	flex-wrap: wrap;
 }
 
-.stuck {
-	overflow: hidden;
-	height: 100%;
-}
-
 .void {
 	width: 98%;
 	height: 1000px;
