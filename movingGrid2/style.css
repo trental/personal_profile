@@ -1,9 +1,20 @@
-body {
-}
-
 body * {
 	background: lightgrey;
 	border: 1px solid lightslategrey;
+}
+
+.parallax {
+	/* The image used */
+	background-image: url('nano-home-bg-tiny.jpg');
+
+	/* Set a specific height */
+	min-height: 500px;
+
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .projectSelector {
