@@ -123,6 +123,10 @@ class ProjectSelector {
 	getSelectedSquare() {
 		return this.position;
 	}
+
+	getStack() {
+		return this.stack;
+	}
 }
 
 class ProjectDetail {
@@ -140,22 +144,28 @@ class ProjectDetail {
 		this.element.classList.remove('toFullSquare');
 		this.element.classList.remove('toTallRectangle');
 		this.element.classList.remove('toFlatRectangle');
+		this.element.classList.remove('notFullSquare');
 	}
 
 	toTinySquare() {
 		setTimeout(() => {
 			this.element.classList.add('toTinySquare');
+			this.element.classList.add('notFullSquare');
 		}, 0);
 
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('tinySquare');
+			this.element.classList.add('notFullSquare');
 		}, this.transitionTime);
 	}
 
 	toFullSquare() {
 		setTimeout(() => {
 			this.element.classList.add('toFullSquare');
+			if (!this.element.classList.contains('fullSquare')) {
+				this.element.classList.add('notFullSquare');
+			}
 		}, 0);
 
 		setTimeout(() => {
@@ -167,22 +177,26 @@ class ProjectDetail {
 	toFlatRectangle() {
 		setTimeout(() => {
 			this.element.classList.add('toFlatRectangle');
+			this.element.classList.add('notFullSquare');
 		}, 0);
 
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('flatRectangle');
+			this.element.classList.add('notFullSquare');
 		}, this.transitionTime);
 	}
 
 	toTallRectangle() {
 		setTimeout(() => {
 			this.element.classList.add('toTallRectangle');
+			this.element.classList.add('notFullSquare');
 		}, 0);
 
 		setTimeout(() => {
 			this.clearSize();
 			this.element.classList.add('tallRectangle');
+			this.element.classList.add('notFullSquare');
 		}, this.transitionTime);
 	}
 }

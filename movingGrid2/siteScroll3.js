@@ -47,12 +47,14 @@ function movePosition(delta) {
 			moveForwards();
 		} else if (
 			// if on a project make sure that user has seen it before or is at the last detail
-			projects[position - 1].getSelectedSquare() == 3 ||
+			(projects[position - 1].getSelectedSquare() == 3 &&
+				projects[position - 1].getStack() == 0) ||
 			visitedAll == true
 		) {
 			moveForwards();
-		} else {
+		} else if (projects[position - 1].getStack() == 0 && notScrolling) {
 			// first visit to project and not at end so flip through the details
+			console.log(notScrolling);
 			projects[position - 1].forward();
 		}
 		if (position == 5) {
@@ -92,10 +94,14 @@ window.addEventListener(
 
 window.addEventListener('keydown', function (event) {
 	event.preventDefault();
-	if (event.key === 'ArrowDown' || event.code == 'Space') {
+	if (
+		event.key === 'ArrowDown' ||
+		event.code == 'Space' ||
+		event.key === 'ArrowRight'
+	) {
 		movePosition(1);
 	}
-	if (event.key === 'ArrowUp') {
+	if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
 		movePosition(-1);
 	}
 });
@@ -113,7 +119,7 @@ window.addEventListener(
 
 		scrolling = setTimeout(function () {
 			notScrolling = true;
-		}, 100);
+		}, 500);
 	},
 	false
 );
