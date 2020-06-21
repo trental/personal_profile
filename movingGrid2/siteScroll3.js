@@ -40,9 +40,9 @@ function moveBackwards() {
 }
 
 // moving position can either be moving between projects or inside project detail
-function movePosition(delta) {
+function movePosition(delta, method) {
 	if (delta === 1) {
-		if (position == 0 || position == 5) {
+		if (position == 0 || position == 5 || method == 'mouse') {
 			// no detail on intro or about so just move along
 			moveForwards();
 		} else if (
@@ -54,7 +54,6 @@ function movePosition(delta) {
 			moveForwards();
 		} else if (projects[position - 1].getStack() == 0 && notScrolling) {
 			// first visit to project and not at end so flip through the details
-			console.log(notScrolling);
 			projects[position - 1].forward();
 		}
 		if (position == 5) {
@@ -86,7 +85,7 @@ window.addEventListener(
 		const delta = Math.sign(event.deltaY);
 
 		if (notScrolling) {
-			movePosition(delta);
+			movePosition(delta, 'mouse');
 		}
 	},
 	{ passive: false }
@@ -99,10 +98,10 @@ window.addEventListener('keydown', function (event) {
 		event.code == 'Space' ||
 		event.key === 'ArrowRight'
 	) {
-		movePosition(1);
+		movePosition(1, 'keyboard');
 	}
 	if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-		movePosition(-1);
+		movePosition(-1, 'keyboard');
 	}
 });
 
@@ -117,9 +116,16 @@ window.addEventListener(
 		window.clearTimeout(scrolling);
 		notScrolling = false;
 
+		// this lets users scroll to a box without getting corrected away from it
+		for (let i = 0; i < stops.length; i++) {
+			if (posTop() >= stops[i] - 400 && posTop() <= stops[i]) {
+				position = i;
+			}
+		}
+
 		scrolling = setTimeout(function () {
 			notScrolling = true;
-		}, 500);
+		}, 100);
 	},
 	false
 );

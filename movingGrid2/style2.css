@@ -88,30 +88,6 @@ a {
 	opacity: 0;
 }
 
-.fullSquare {
-	width: 630px;
-	height: 540px;
-}
-
-.tallRectangle {
-	width: 70px;
-	height: 540px;
-}
-
-.flatRectangle {
-	width: 630px;
-	height: 60px;
-}
-
-.tinySquare {
-	width: 70px;
-	height: 60px;
-}
-
-.notFullSquare > div {
-	opacity: 0;
-}
-
 .toTinySquare {
 	animation: kfToTinySquare 350ms;
 	animation-fill-mode: forwards;
@@ -201,6 +177,31 @@ a {
 	border: 0;
 	text-shadow: 1px 1px #000000;
 	text-align: left;
+}
+
+.fullSquare {
+	width: 630px;
+	height: 540px;
+	opacity: 0.8;
+}
+
+.tallRectangle {
+	width: 70px;
+	height: 540px;
+}
+
+.flatRectangle {
+	width: 630px;
+	height: 60px;
+}
+
+.tinySquare {
+	width: 70px;
+	height: 60px;
+}
+
+.notFullSquare > div {
+	opacity: 0;
 }
 
 @keyframes kfToTinySquare {

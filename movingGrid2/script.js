@@ -81,7 +81,6 @@ class ProjectSelector {
 	}
 
 	backward() {
-		this.position = Math.max(this.position - 1, 0);
 		if (this.position == 1) {
 			this.stack++;
 			setTimeout(() => {
@@ -101,6 +100,7 @@ class ProjectSelector {
 				this.decreaseStack();
 			}, this.stack * this.transitionTime);
 		}
+		this.position = Math.max(this.position - 1, 0);
 	}
 
 	onClick(e) {
