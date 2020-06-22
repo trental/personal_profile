@@ -1,4 +1,4 @@
-let stops = [0, 1400, 3000, 4600, 6200, 7800];
+let stops = [0, 1450, 3100, 4700, 6350, 7950];
 let position = 0;
 let projects = [];
 let visitedAll = false;
