@@ -1,11 +1,12 @@
 body * {
-	background: lightgrey;
 	border: 1px solid white;
 	opacity: 1;
+	font-size: 29px;
 }
 
 h1 {
 	margin: auto;
+	border: 0px;
 }
 
 .parallax {
@@ -23,8 +24,7 @@ h1 {
 }
 
 .intro {
-	background: hsla(146, 62%, 95%, 1);
-	font-family: 'Lucida Console', Monaco, monospace;
+	background: rgba(150, 150, 150, 1);
 	font-size: 1.5rem;
 	text-align: center;
 	margin: auto;
@@ -44,17 +44,18 @@ h1 {
 	color: black;
 	width: 705px;
 	text-align: center;
+	font-size: 17px;
 }
 
 a {
 	text-decoration: none;
 	background-color: white;
 	color: black;
+	font-size: 17px;
 }
 
 .projectSelector {
 	background: hsla(146, 62%, 95%, 1);
-	font-family: 'Lucida Console', Monaco, monospace;
 	font-size: 1.5rem;
 	text-align: center;
 	margin: auto;
@@ -69,7 +70,6 @@ a {
 
 .about {
 	background: hsla(146, 62%, 95%, 1);
-	font-family: 'Lucida Console', Monaco, monospace;
 	font-size: 1.5rem;
 	text-align: center;
 	margin: auto;
@@ -108,11 +108,119 @@ a {
 	animation-fill-mode: forwards;
 }
 
+.whiteText {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	opacity: 1;
+	border: 0;
+	text-shadow: 1px 1px #000000;
+}
+
+.blackText {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	pointer-events: none;
+	background-color: rgba(255, 255, 255, 0.75);
+	color: black;
+	opacity: 1;
+	border: 0;
+}
+
 .paperclip1 {
 	background-image: url('assets/paperclip.png');
 }
 
 .paperclip1Text {
+	padding-top: 150px;
+}
+
+.paperclip2 {
+	background-image: url('assets/paperclipData.png');
+}
+
+.paperclip2Text {
+	height: 40%;
+	top: 10%;
+	-ms-transform: translateY(75%);
+	transform: translateY(75%);
+}
+
+.paperclip3 {
+	background-image: url('assets/paperclipCycle.png');
+}
+
+.paperclip3Text {
+	width: 80%;
+	padding-top: 75px;
+	text-align: left;
+}
+
+.paperclip4 {
+	background-image: url('assets/paperclipCRUD.png');
+}
+
+.paperclip4Text {
+	height: 100%;
+	width: 80%;
+	padding-top: 90px;
+}
+
+.statements1 {
+	background-image: url('assets/statements.png');
+}
+
+.statements1Text {
+	margin-top: 80px;
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+.statements2 {
+	background-image: url('assets/statementsData.png');
+	background-repeat: no-repeat;
+	background-color: white;
+	text-align: left;
+}
+
+.statements2Text {
+	margin-top: 50px;
+	margin-left: 10px;
+	width: 50%;
+	height: 165px;
+}
+
+.statements3 {
+	background-image: url('assets/statementsIncome.png');
+}
+
+.statements3Text {
+	margin-top: 100px;
+	height: 300px;
+	width: 80%;
+	background-color: rgba(255, 255, 255, 0.95);
+}
+
+.statements4 {
+	background-image: url('assets/statementsCRUD.png');
+	background-repeat: no-repeat;
+	background-color: white;
+}
+
+.statements4Text {
+	background-repeat: no-repeat;
+	margin-top: 70px;
+	height: 100px;
+}
+
+.ravencoin1 {
+	background-image: url('assets/ravencoin.png');
+}
+
+.ravencoin1Text {
 	height: 100%;
 	width: 100%;
 	margin: auto;
@@ -125,11 +233,11 @@ a {
 	text-shadow: 1px 1px #000000;
 }
 
-.paperclip2 {
-	background-image: url('assets/paperclipData.png');
+.ravencoin2 {
+	background-image: url('assets/ravencoinBlock.png');
 }
 
-.paperclip2Text {
+.ravencoin2Text {
 	width: 100%;
 	margin: auto;
 	pointer-events: none;
@@ -143,11 +251,11 @@ a {
 	text-shadow: 1px 1px #ffffff;
 }
 
-.paperclip3 {
-	background-image: url('assets/paperclipCycle.png');
+.ravencoin3 {
+	background-image: url('assets/ravencoinSearch.png');
 }
 
-.paperclip3Text {
+.ravencoin3Text {
 	height: 100%;
 	width: 80%;
 	padding-top: 75px;
@@ -161,11 +269,82 @@ a {
 	text-align: left;
 }
 
-.paperclip4 {
-	background-image: url('assets/paperclipCRUD.png');
+.ravencoin4 {
+	background-image: url('assets/ravencoinTransaction.png');
 }
 
-.paperclip4Text {
+.ravencoin4Text {
+	height: 100%;
+	width: 80%;
+	padding-top: 90px;
+	margin: auto;
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	opacity: 1;
+	border: 0;
+	text-shadow: 1px 1px #000000;
+	text-align: left;
+}
+
+.flashcards1 {
+	background-image: url('assets/flashcards.png');
+}
+
+.flashcards1Text {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	pointer-events: none;
+	padding-top: 150px;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	opacity: 1;
+	border: 0;
+	text-shadow: 1px 1px #000000;
+}
+
+.flashcards2 {
+	background-image: url('assets/flashcardsScore.png');
+}
+
+.flashcards2Text {
+	width: 100%;
+	margin: auto;
+	pointer-events: none;
+	top: 10%;
+	-ms-transform: translateY(75%);
+	transform: translateY(75%);
+	background-color: rgba(255, 255, 255, 0.75);
+	color: black;
+	opacity: 1;
+	border: 0;
+	text-shadow: 1px 1px #ffffff;
+}
+
+.flashcards3 {
+	background-image: url('assets/flashcardsCRUD.png');
+}
+
+.flashcards3Text {
+	height: 100%;
+	width: 80%;
+	padding-top: 75px;
+	margin: auto;
+	pointer-events: none;
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	opacity: 1;
+	border: 0;
+	text-shadow: 1px 1px #000000;
+	text-align: left;
+}
+
+.flashcards4 {
+	background-image: url('assets/flashcardsAdjustableAlgo.png');
+}
+
+.flashcards4Text {
 	height: 100%;
 	width: 80%;
 	padding-top: 90px;
