@@ -1,13 +1,23 @@
-let stops = [75, 700, 1525, 2350, 3175, 4000];
+let stops = [75, 850, 1700, 2550, 3400, 4250];
 let position = 0;
 let projects = [];
 let cornersClicked = false;
 
-document.querySelectorAll('.projectSelector').forEach((project) => {
-	projects.push(new ProjectSelector(project, transitionTime, cornersClicked));
-});
-
 const navLinks = document.querySelectorAll('.navLink');
+
+const cornerClickers = document.querySelectorAll('.cornerClicker');
+
+cornerClickers.hide = function () {
+	cornerClickers.forEach((el) => {
+		el.classList.add('hide');
+	});
+};
+
+document.querySelectorAll('.projectSelector').forEach((project) => {
+	projects.push(
+		new ProjectSelector(project, transitionTime, cornerClickers.hide)
+	);
+});
 
 navLinks.forEach((navLink) => {
 	navLink.addEventListener('click', () => {

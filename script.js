@@ -105,7 +105,6 @@ class ProjectSelector {
 	}
 
 	onClick(e) {
-		this.cornersClicked = true;
 		const clicked = e.target.dataset.placement;
 		if (clicked === 'TopLeft') {
 			this.goTopLeft();
@@ -113,12 +112,15 @@ class ProjectSelector {
 		} else if (clicked === 'TopRight') {
 			this.goTopRight();
 			this.position = 1;
+			this.cornersClicked();
 		} else if (clicked === 'BottomLeft') {
 			this.goBottomLeft();
 			this.position = 2;
+			this.cornersClicked();
 		} else if (clicked === 'BottomRight') {
 			this.goBottomRight();
 			this.position = 3;
+			this.cornersClicked();
 		}
 	}
 
