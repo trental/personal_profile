@@ -10,17 +10,11 @@ h1 {
 }
 
 .parallaxGray {
-	background: 
-    /* top, transparent red, faked with gradient */ linear-gradient(
-			rgba(0, 0, 0, 0.55),
-			rgba(0, 0, 0, 0.85)
-		),
-		/* bottom, image */ url(assets/smalltile.png);
+	background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.85)),
+		url(assets/smalltile.png);
 	min-height: 500px;
 	background-attachment: fixed;
-	/* background-position: center; */
 	background-repeat: repeat;
-	/* background-size: cover; */
 }
 
 .intro {
