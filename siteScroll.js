@@ -1,10 +1,19 @@
-let stops = [0, 1450, 3100, 4700, 6350, 7950];
+let stops = [75, 1500, 3125, 4750, 6375, 8000];
 let position = 0;
 let projects = [];
 let visitedAll = false;
 
 document.querySelectorAll('.projectSelector').forEach((project) => {
 	projects.push(new ProjectSelector(project, transitionTime));
+});
+
+const navLinks = document.querySelectorAll('.navLink');
+
+navLinks.forEach((navLink) => {
+	navLink.addEventListener('click', () => {
+		position = navLink.dataset.position;
+		gotoPosition();
+	});
 });
 
 function posTop() {
@@ -22,6 +31,14 @@ function posTop() {
 // move to next project
 function moveForwards() {
 	position = Math.min(position + 1, stops.length - 1);
+
+	navLinks.forEach((navLink) => {
+		navLink.classList.remove('navLinkSelected');
+		if (navLink.dataset.position == position) {
+			navLink.classList.add('navLinkSelected');
+		}
+	});
+
 	window.scrollTo({
 		top: stops[position],
 		left: 0,
@@ -32,6 +49,12 @@ function moveForwards() {
 // move to previous project
 function moveBackwards() {
 	position = Math.max(position - 1, 0);
+	navLinks.forEach((navLink) => {
+		navLink.classList.remove('navLinkSelected');
+		if (navLink.dataset.position == position) {
+			navLink.classList.add('navLinkSelected');
+		}
+	});
 	window.scrollTo({
 		top: stops[position],
 		left: 0,
@@ -133,6 +156,13 @@ window.addEventListener(
 // some browsers (looking at you Firefox) don't like completing the scroll so you get pushed along
 
 function gotoPosition() {
+	navLinks.forEach((navLink) => {
+		navLink.classList.remove('navLinkSelected');
+		if (navLink.dataset.position == position) {
+			navLink.classList.add('navLinkSelected');
+		}
+	});
+
 	window.scrollTo({
 		top: stops[position],
 		left: 0,

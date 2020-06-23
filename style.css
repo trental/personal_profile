@@ -9,23 +9,71 @@ h1 {
 	border: 0px;
 }
 
-.parallax {
-	background-image: url('nano-home-bg-tiny.jpg');
+.parallaxGray {
+	background: 
+    /* top, transparent red, faked with gradient */ linear-gradient(
+			rgba(0, 0, 0, 0.55),
+			rgba(0, 0, 0, 0.85)
+		),
+		/* bottom, image */ url(assets/smalltile.png);
 	min-height: 500px;
 	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+	/* background-position: center; */
+	background-repeat: repeat;
+	/* background-size: cover; */
 }
 
 .intro {
 	background: rgba(150, 150, 150, 1);
 	font-size: 1.5rem;
-	text-align: center;
 	margin: auto;
 	margin-top: 100px;
-	height: 400px;
+	/* height: 400px; */
 	width: 700px;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+	position: relative;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.introText {
+	border: none;
+	padding: 10px;
+	font-size: 1.5rem;
+}
+
+.navigation {
+	border: none;
+	background: black;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: stretch;
+	height: 75px;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0px;
+	z-index: 1;
+}
+
+.navLink {
+	border: none;
+	margin: 0 20px;
+	width: 150px;
+	background: rgba(35, 35, 35, 1);
+	text-align: center;
+}
+
+.navLink:hover {
+	background: rgba(100, 100, 100, 1);
+	cursor: pointer;
+}
+
+.navLinkSelected {
+	background: rgba(100, 100, 100, 1);
 }
 
 .projectLinks {
@@ -56,6 +104,7 @@ a {
 }
 
 .projectSelector {
+	border: 1px solid white;
 	background: hsla(146, 62%, 95%, 1);
 	font-size: 1.5rem;
 	text-align: center;
