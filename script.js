@@ -1,9 +1,10 @@
 const transitionTime = 350;
 
 class ProjectSelector {
-	constructor(el, transitionTime) {
+	constructor(el, transitionTime, cornersClicked) {
 		this.element = el;
 		this.transitionTime = transitionTime;
+		this.cornersClicked = cornersClicked;
 		this.TopLeft = new ProjectDetail(
 			el.querySelector('.TopLeft'),
 			transitionTime
@@ -104,6 +105,7 @@ class ProjectSelector {
 	}
 
 	onClick(e) {
+		this.cornersClicked = true;
 		const clicked = e.target.dataset.placement;
 		if (clicked === 'TopLeft') {
 			this.goTopLeft();

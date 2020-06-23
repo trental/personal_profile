@@ -1,10 +1,10 @@
-let stops = [75, 1500, 3125, 4750, 6375, 8000];
+let stops = [75, 700, 1525, 2350, 3175, 4000];
 let position = 0;
 let projects = [];
-let visitedAll = false;
+let cornersClicked = false;
 
 document.querySelectorAll('.projectSelector').forEach((project) => {
-	projects.push(new ProjectSelector(project, transitionTime));
+	projects.push(new ProjectSelector(project, transitionTime, cornersClicked));
 });
 
 const navLinks = document.querySelectorAll('.navLink');
@@ -101,18 +101,18 @@ function movePosition(delta, method) {
 
 // let users navigate with mouse, arrow keys or space bar
 
-window.addEventListener(
-	'wheel',
-	(event) => {
-		event.preventDefault();
-		const delta = Math.sign(event.deltaY);
+// window.addEventListener(
+// 	'wheel',
+// 	(event) => {
+// 		event.preventDefault();
+// 		const delta = Math.sign(event.deltaY);
 
-		if (notScrolling) {
-			movePosition(delta, 'mouse');
-		}
-	},
-	{ passive: false }
-);
+// 		if (notScrolling) {
+// 			movePosition(delta, 'mouse');
+// 		}
+// 	},
+// 	{ passive: false }
+// );
 
 window.addEventListener('keydown', function (event) {
 	event.preventDefault();
@@ -143,6 +143,12 @@ window.addEventListener(
 		for (let i = 0; i < stops.length; i++) {
 			if (posTop() >= stops[i] - 400 && posTop() <= stops[i]) {
 				position = i;
+				navLinks.forEach((navLink) => {
+					navLink.classList.remove('navLinkSelected');
+					if (navLink.dataset.position == position) {
+						navLink.classList.add('navLinkSelected');
+					}
+				});
 			}
 		}
 
@@ -170,8 +176,8 @@ function gotoPosition() {
 	});
 }
 
-setInterval(() => {
-	if (notScrolling && posTop() != stops[position]) {
-		gotoPosition();
-	}
-}, 100);
+// setInterval(() => {
+// 	if (notScrolling && posTop() != stops[position]) {
+// 		gotoPosition();
+// 	}
+// }, 100);

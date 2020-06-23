@@ -9,6 +9,10 @@ h1 {
 	border: 0px;
 }
 
+span {
+	border: none;
+}
+
 .parallaxGray {
 	background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.85)),
 		url(./assets/smalltile.png);
@@ -35,6 +39,10 @@ h1 {
 	border: none;
 	padding: 10px;
 	font-size: 1.5rem;
+}
+
+.hide {
+	display: none;
 }
 
 .navigation {
@@ -124,7 +132,7 @@ a {
 
 .void {
 	width: 98%;
-	height: 1000px;
+	height: 200px;
 	opacity: 0;
 }
 
