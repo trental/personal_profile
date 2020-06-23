@@ -11,7 +11,7 @@ h1 {
 
 .parallaxGray {
 	background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.85)),
-		url(assets/smalltile.png);
+		url(./assets/smalltile.png);
 	min-height: 500px;
 	background-attachment: fixed;
 	background-repeat: repeat;
