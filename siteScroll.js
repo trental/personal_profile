@@ -124,19 +124,19 @@ function movePosition(delta, method) {
 // 	{ passive: false }
 // );
 
-window.addEventListener('keydown', function (event) {
-	event.preventDefault();
-	if (
-		event.key === 'ArrowDown' ||
-		event.code == 'Space' ||
-		event.key === 'ArrowRight'
-	) {
-		movePosition(1, 'keyboard');
-	}
-	if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-		movePosition(-1, 'keyboard');
-	}
-});
+// window.addEventListener('keydown', function (event) {
+// 	event.preventDefault();
+// 	if (
+// 		event.key === 'ArrowDown' ||
+// 		event.code == 'Space' ||
+// 		event.key === 'ArrowRight'
+// 	) {
+// 		movePosition(1, 'keyboard');
+// 	}
+// 	if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+// 		movePosition(-1, 'keyboard');
+// 	}
+// });
 
 // prevent over-scrolling by looking to see if scrolling is currently active
 
